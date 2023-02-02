@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Calculate Your Body Mass Index {% endblock %}</h1>
+    {% for post in posts %}
+        <a>
+            <h2>{{ post['title'] }}</h2>
+            <h5>BMI: {{ post['content'] }}</h5>
+
+        </a>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <a href="{{ url_for('edit', id=post['id']) }}">
+        </a>
+        <hr>
+    {% endfor %}
+{% endblock %}

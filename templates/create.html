@@ -1,0 +1,57 @@
+<html>
+<head>
+		<script type="text/javascript">
+                        function Calcul(){
+                                var h = document.getElementById('height_value').value ;
+                                var w = document.getElementById('weight_value').value ;
+                                var hm = h/100
+                                document.getElementById('content').value =  parseFloat(w) /  (parseFloat(hm) * parseFloat(hm));
+                        };
+                </script>
+	</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <h1>{% block title %} Create a new profile {% endblock %}</h1>
+    
+    <form method="post">
+        <div class="form-group">
+            <label for="title">Name</label>
+            <input type="text" name="title"
+                   placeholder="Insert your name" class="form-control"
+                   value="{{ request.form['title'] }}"></input>
+        </div>
+    
+        <div class="form-group">
+            <label for="height_value">Height</label>
+            <input type="text" name="height_value" id="height_value"
+                   placeholder="Insert your height in cm" class="form-control"
+                   value="{{ request.form['height_value'] }}"></input>
+        </div>
+
+        <div class="form-group">
+            <label for="weight_value">Weight</label>
+            <input type="text" name="weight_value" id="weight_value"
+                   placeholder="Insert your weight in kg" class="form-control"
+                   value="{{ request.form['weight_value'] }}"></input>
+        </div>
+
+
+        <div class="form-group">
+            <button type="button" onClick="Calcul();" class="btn btn-secondary">Calcul your BMI</button>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Your BMI</label>
+            <input type="text" name="content" placeholder="Your BMI" ID="content"  class="form-control" value="{{ request.form['content'] }}"></input> 
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit your score</button>
+        </div>
+        </div>
+    </form>
+</body>
+</html><!doctype html>
+{% endblock %}
